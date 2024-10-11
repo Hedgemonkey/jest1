@@ -2,18 +2,23 @@
  * @jest-environment jsdom
  */
 
-const { removeLinesBeforeExternalMatcherTrap } = require("jest-snapshot/build/utils");
 const buttonClick = require("../button");
-const { describe } = require("yargs");
-const { test } = require("picomatch");
 
-removeLinesBeforeExternalMatcherTrap( () => {
-    document.body.innerHTML = "<p id='par'></p>>";
+beforeAll(() => {
+    let fs = require("fs");
+    let fileContents = fs.readFileSync("mocking/index.html", "utf-8");
+    document.open();
+    document.write(fileContents);
+    document.close();
 });
 
 describe("DOM tests", () => {
-    test("expects p content to change", () => {
+    test("Expects content to change", () => {
         buttonClick();
-        expect(document.getElementById("par").innerHTML).toEqual("You Clicked");
+        expect(document.getElementById("par")
+            .innerHTML).toEqual("You Clicked");
+    });
+    test("h1 should exist", () => {
+        expect(document.getElementsByTagName("h1").length).toBe(1);
     });
 });

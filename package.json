@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
   },
   "name": "jest1",
   "version": "1.0.0",
@@ -154,7 +155,6 @@
     "jest-diff": "^26.6.2",
     "jest-docblock": "^26.0.0",
     "jest-each": "^26.6.2",
-    "jest-environment-jsdom": "^26.6.2",
     "jest-environment-node": "^26.6.2",
     "jest-get-type": "^26.3.0",
     "jest-haste-map": "^29.7.0",
@@ -347,7 +347,7 @@
   "jest": {
     "verbose": true,
     "testEnvironmentOptions": {
-        "url": "http://0.0.0.0:8000/"
+      "url": "http://localhost/"
     }
   }
 }
